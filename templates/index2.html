@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Recognition SMS Sender</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<h1>SMS Sender</h1>
+<button id="sendMessage">Send Message</button>
+<div id="message"></div>
+
+<script>
+    document.getElementById('sendMessage').addEventListener('click', function() {
+        document.getElementById('message').innerText = "Sending...";
+        
+        fetch('/send', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    document.getElementById('message').innerText = data.message; // Display success messages
+                } else if (data.error) {
+                    document.getElementById('message').innerText = 'Error: ' + data.error; // Display errors if any
+                }
+            })
+            .catch(error => {
+                document.getElementById('message').innerText = 'An error occurred: ' + error.message; // Handle fetch errors
+            });
+    });
+</script>
+
+</body>
+</html>

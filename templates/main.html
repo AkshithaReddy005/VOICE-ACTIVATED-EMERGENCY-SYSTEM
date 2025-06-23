@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alertify - Automated Personal Safety System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://media.istockphoto.com/id/1208202807/photo/young-handsome-man-gives-a-voice-command-to-a-smart-home-application-on-his-smartphone-to.jpg?s=612x612&w=0&k=20&c=ZSDZcHkIkAv-Ju2cWyQaivhNeiUL1o4kmbm2ePfAaNY=');
+            background-size: cover;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .feature {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            transition: transform 0.3s;
+            background-image: url('https://images.unsplash.com/photo-1573497491203-2f52f73f813c');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .feature:hover {
+            transform: scale(1.05);
+        }
+
+        .feature h3 {
+            margin-top: 0;
+        }
+
+        .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: rgba(0, 0, 0, 0.8);
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature {
+                width: 90%;
+            }
+        }
+
+        #registrationForm {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #registrationForm input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        #registrationForm button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #registrationForm button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        #userDisplay {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        #phoneNumbers {
+            margin-top: 20px;
+        }
+
+        #phoneNumbers ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #phoneNumbers li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Alertify</h1>
+        <h2>Your Personal Safety Assistant</h2>
+    </header>
+
+    <div class="container">
+        <div class="feature">
+            <i class="fas fa-shield-alt icon"></i>
+            <h3>Why Alertify?</h3>
+            <p>Alertify is our innovative project designed to enhance personal safety by providing voice-activated alerts and location tracking in emergencies.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-lock icon"></i>
+            <h3>Comprehensive Protection</h3>
+            <p>With Alertify, you can trigger emergency response by saying the keyword "Alertify." This ensures that you remain connected and protected in critical situations.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-user-friends icon"></i>
+            <h3>User Friendly</h3>
+            <p>Our walkthrough menu and videos guide you through setting up Alertify with ease. Find additional information on our FAQ page.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-microphone-alt icon"></i>
+            <h3>Latest Technology</h3>
+            <p>Alertify utilizes advanced voice activation technology that automatically triggers emergency alerts when the keyword "Alertify" is recognized. SMS notifications are sent automatically, with a manual activation option available as a backup.</p>
+        </div>
+        
+        <div class="feature">
+            <i class="fas fa-video icon"></i>
+            <h3>Recording</h3>
+            <p>Alertify records up to 15 minutes of actual events during emergencies, stored locally and on your personal cloud for future retrieval.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-map-marked-alt icon"></i>
+            <h3>GPS with MPH Data</h3>
+            <p>Your emergency contacts and first responders will see your exact location when you trigger an alert, along with speed data if applicable.</p>
+        </div>
+    </div>
+
+    <div class="buttons-container">
+        <button id="registerBtn" class="button">Register for Alertify</button>
+        <a href="/listen" class="button">Voice recording</a>
+        <a href="/send" class="button">Send message</a>
+    </div>
+
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" style="color: #fff; cursor: pointer; float: right;">&times;</span>
+            <h2>Register for Alertify</h2>
+            <form id="registrationForm">
+                <input type="text" id="username" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                
+                <h3>Emergency Contacts</h3>
+                <input type="text" id="contact1_name" placeholder="Emergency Contact 1 Name">
+                <input type="text" id="contact1_number" placeholder="Emergency Contact 1 Number">
+                <input type="text" id="contact2_name" placeholder="Emergency Contact 2 Name">
+                <input type="text" id="contact2_number" placeholder="Emergency Contact 2 Number">
+                <input type="text" id="contact3_name" placeholder="Emergency Contact 3 Name">
+                <input type="text" id="contact3_number" placeholder="Emergency Contact 3 Number">
+                <input type="text" id="contact4_name" placeholder="Emergency Contact 4 Name">
+                <input type="text" id="contact4_number" placeholder="Emergency Contact 4 Number">
+                <input type="text" id="contact5_name" placeholder="Emergency Contact 5 Name">
+                <input type="text" id="contact5_number" placeholder="Emergency Contact 5 Number">
+                <input type="text" id="contact6_name" placeholder="Emergency Contact 6 Name">
+                <input type="text" id="contact6_number" placeholder="Emergency Contact 6 Number">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="userDisplay"></div>
+    <div id="phoneNumbers"></div>
+
+    <footer>
+        <p>&copy; 2024 Alertify. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Modal interaction
+        const registerBtn = document.getElementById('registerBtn');
+        const registrationModal = document.getElementById('registrationModal');
+        const closeModal = document.getElementById('closeModal');
+        const registrationForm = document.getElementById('registrationForm');
+
+        registerBtn.onclick = () => {
+            registrationModal.style.display = "block";
+        }
+
+        closeModal.onclick = () => {
+            registrationModal.style.display = "none";
+        }
+
+        window.onclick = (event) => {
+            if (event.target === registrationModal) {
+                registrationModal.style.display = "none";
+            }
+        }
+
+        // Handle form submission
+        registrationForm.onsubmit = async (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const contacts = [
+                {
+                    name: document.getElementById('contact1_name').value,
+                    number: document.getElementById('contact1_number').value
+                },
+                {
+                    name: document.getElementById('contact2_name').value,
+                    number: document.getElementById('contact2_number').value
+                },
+                {
+                    name: document.getElementById('contact3_name').value,
+                    number: document.getElementById('contact3_number').value
+                },
+                {
+                    name: document.getElementById('contact4_name').value,
+                    number: document.getElementById('contact4_number').value
+                },
+                {
+                    name: document.getElementById('contact5_name').value,
+                    number: document.getElementById('contact5_number').value
+                },
+                {
+                    name: document.getElementById('contact6_name').value,
+                    number: document.getElementById('contact6_number').value
+                }
+            ];
+
+            const data = {
+                username,
+                email,
+                password,
+                contacts
+            };
+
+            const response = await fetch('/register_contacts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                const user = await response.json();
+                document.getElementById('userDisplay').textContent = `Welcome, ${user.username}`;
+                document.getElementById('phoneNumbers').innerHTML = `
+                    <h3>Your Emergency Contacts:</h3>
+                    <ul>
+                        ${user.contacts.map(contact => `
+                            <li>${contact.name}: ${contact.number}</li>
+                        `).join('')}
+                    </ul>
+                `;
+                registrationModal.style.display = "none";
+            } else {
+                alert('Registration failed');
+            }
+        }
+    </script>
+</body>
+
+</html>
